@@ -1,0 +1,14 @@
+.content-page{
+	margin:0;
+}
+.content-page > .content{
+	margin-top:0;
+	padding-top:0;
+	margin-bottom:0;
+}
+.wrapper-page{
+	margin-top:6.5%;
+}
+.panel-pages .panel-heading{
+	padding:5px;
+}
