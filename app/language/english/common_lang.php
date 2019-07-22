@@ -100,12 +100,11 @@ $lang['button_reward']                 = 'Apply Points';
 $lang['button_currency']               = 'Refresh Currency Values';
 
 // Tab
-$lang['tab_address']                   = 'Address';
-$lang['tab_admin']                     = 'Admin';
-$lang['tab_attribute']                 = 'Attribute';
-$lang['tab_customer']                  = 'Customer Details';
-$lang['tab_data']                      = 'Data';
-$lang['tab_design']                    = 'Design';
+$lang['tab_address']                   = 'Address Screen';
+$lang['tab_phone']                     = 'Phone Screen';
+$lang['tab_card']                  	   = 'Proof Screen';
+$lang['tab_photo']                     = 'Photo Screen';
+$lang['tab_notification']              = 'Notification';
 $lang['tab_discount']                  = 'Discount';
 $lang['tab_general']                   = 'General';
 $lang['tab_history']                   = 'History';

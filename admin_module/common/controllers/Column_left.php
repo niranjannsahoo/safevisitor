@@ -171,6 +171,14 @@ class Column_left extends MX_Controller {
 				'children' => array()		
 			);	
 		}
+
+		if ($this->user->hasPermission('access', 'setting/checkinflow')) {
+			$system[] = array(
+				'name'	  => $this->lang->line('text_checkinflow'),
+				'href'     => admin_url('setting/checkinflow'),
+				'children' => array()		
+			);	
+		}
 		
 		// Localisation
 		$localisation = array();
