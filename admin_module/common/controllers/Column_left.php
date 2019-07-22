@@ -168,7 +168,7 @@ class Column_left extends MX_Controller {
 		
 		if ($this->user->hasPermission('access', 'setting/checkinflow')) {
 			$system[] = array(
-				'name'	  => $this->lang->line('text_checkin'),
+				'name'	  => $this->lang->line('text_checkinflow'),
 				'href'     => admin_url('setting/checkinflow'),
 				'children' => array()		
 			);	

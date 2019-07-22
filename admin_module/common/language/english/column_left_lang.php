@@ -9,32 +9,24 @@ $lang['text_add_page']                  = 'Add Pages';
 $lang['text_post']                   	 = 'Posts';
 $lang['text_list_post']                 = 'All Posts';
 $lang['text_add_post']                  = 'Add Posts';
+$lang['text_category']                  = 'Category';
+$lang['text_comment']                   = 'Comment';
 
 $lang['text_media']                   	 = 'Media';
 $lang['text_list_media']                = 'All Media';
 $lang['text_add_media']                 = 'Add Media';
 
-$lang['text_book']                    	 = 'Book';
-$lang['text_books']                     = 'All Books';
-$lang['text_book_add']                  = 'Add Book';
-
-$lang['text_student']                   = 'Student';
-$lang['text_students']                   = 'All Students';
-$lang['text_student_add']                = 'Add Student';
-
-$lang['text_issue_book']                = 'Issue Book';
-$lang['text_circulation']               = 'Circulation';
-
-
-$lang['text_report']                    = 'Reports';
-$lang['text_fine_report']               = 'Fine/Penality Report';
-$lang['text_notification_report']       = 'Notification Report';
-$lang['text_inventory_report']          = 'Inventory Report';
-$lang['text_delaymember_report']        = 'Delay Member Report';
+$lang['text_gallery']                   = 'Gallery';
+$lang['text_all_gallery']               = 'All Gallery';
+$lang['text_add_gallery']               = 'Add Gallery';
 
 $lang['text_user']                      = 'Users';
 $lang['text_users']                     = 'All Users';
 $lang['text_user_group']                = 'User Groups';
+
+$lang['text_visitor']                   = 'Visitors';
+$lang['text_list_visitor']              = 'All Visitors';
+$lang['text_web_checkin']               = 'Web Checkin';
 
 $lang['text_system']                    = 'System';
 $lang['text_setting']                   = 'Settings';
