@@ -38,6 +38,7 @@ $lang['text_user_group']                = 'User Groups';
 
 $lang['text_system']                    = 'System';
 $lang['text_setting']                   = 'Settings';
+$lang['text_checkinflow']               = 'Checkin Flow';
 $lang['text_localisation']              = 'Localisation';
 $lang['text_country']              		 = 'Country';
 $lang['text_state']              		 = 'State';

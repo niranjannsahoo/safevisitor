@@ -22,8 +22,9 @@ class Checkinflow extends Admin_Controller {
 		);
 		
 		
-		if ($this->input->server('REQUEST_METHOD') === 'POST' && $this->validatecheckinflow()){
-			//printr($this->input->post());
+		if ($this->input->server('REQUEST_METHOD') === 'POST'){
+			printr($this->input->post());
+			exit;
 			$this->setting_model->editSetting('checkin',$this->input->post());
 			$this->session->set_flashdata('message', 'Checkinflow Saved');
 			redirect(current_url());
@@ -54,6 +55,13 @@ class Checkinflow extends Admin_Controller {
 		}
 
 		/*Address Tab*/
+
+		if ($this->input->post('config_address_host')){
+			$data['config_address_host'] = $this->input->post('config_address_host');
+		} else {
+			$data['config_address_host'] = $this->settings->config_address_host;
+		}
+
 		$data['fieldTypes']=array(
 			'text'=>'Textbox',
 			'radio'=>'Single Choice',
@@ -61,104 +69,33 @@ class Checkinflow extends Admin_Controller {
 			'select'=>'Dropdown'
 		);
 
+		//$this->settings->config_address_field = 
+
 		if ($this->input->post('config_address_field')){
 			$data['config_address_field'] = $this->input->post('config_address_field');
 		} else {
 			$data['config_address_field'] = (array)$this->settings->config_address_field;
 		}
 
+		/*Card Tab*/
+		if ($this->input->post('config_card_info')){
+			$data['config_card_info'] = $this->input->post('config_card_info');
+		} else {
+			$data['config_card_info'] = $this->settings->config_card_info;
+		}
 
-		
+		/*Photo Tab*/
+		if ($this->input->post('config_photo_info')){
+			$data['config_photo_info'] = $this->input->post('config_photo_info');
+		} else {
+			$data['config_photo_info'] = $this->settings->config_photo_info;
+		}
        
 			
       $this->template->view('checkinflow', $data);
 	}
 	
-	public function validatecheckinflow(){
-		$regex = "(\/?([a-zA-Z0-9+\$_-]\.?)+)*\/?"; // Path
-      	$regex .= "(\?[a-zA-Z+&\$_.-][a-zA-Z0-9;:@&%=+\/\$_.-]*)?"; // GET Query
-     	$regex .= "(#[a-zA-Z_.-][a-zA-Z0-9+\$_.-]*)?"; // Anchor 
-		
-		$rules=array(
-			'config_site_title' => array(
-				'field' => 'config_site_title', 
-				'label' => 'Site Title', 
-				'rules' => "trim|required"
-			),
-			'config_site_tagline' => array(
-				'field' => 'config_site_tagline', 
-				'label' => 'Site Tagline', 
-				'rules' => "trim|required"
-			),
-			'config_meta_title' => array(
-				'field' => 'config_meta_title', 
-				'label' => 'Meta Title', 
-				'rules' => "trim|required"
-			),
-			'config_site_owner' => array(
-				'field' => 'config_site_owner', 
-				'label' => 'Site Owner', 
-				'rules' => "trim|required"
-			),
-			'config_address' => array(
-				'field' => 'config_address', 
-				'label' => 'Site Address', 
-				'rules' => "trim|required"
-			),
-			'config_country_id' => array(
-				'field' => 'config_country_id', 
-				'label' => 'Country', 
-				'rules' => "trim|required"
-			),
-			'config_state_id' => array(
-				'field' => 'config_state_id', 
-				'label' => 'State', 
-				'rules' => "trim|required"
-			),
-			'config_email' => array(
-				'field' => 'config_email', 
-				'label' => 'Email', 
-				'rules' => "trim|required|valid_email"
-			),
-			'config_telephone' => array(
-				'field' => 'config_telephone', 
-				'label' => 'Telephone', 
-				'rules' => "trim|required|numeric"
-			),
-			'config_pagination_limit_front' => array(
-				'field' => 'config_pagination_limit_front', 
-				'label' => 'Pagination limit For front', 
-				'rules' => "trim|required|numeric"
-			),
-			'config_pagination_limit_admin' => array(
-				'field' => 'config_pagination_limit_admin', 
-				'label' => 'pagination limit for admin', 
-				'rules' => "trim|required|numeric"
-			),
-			'username' => array(
-				'field' => 'username', 
-				'label' => 'Username', 
-				'rules' => "trim|required|max_length[255]|regex_match[/^$regex$/]"
-			),
-			'password' => array(
-				'field' => 'password', 
-				'label' => 'Password', 
-				'rules' => 'trim|required|max_length[100]'
-			),
-			
-		);
-		
-		$this->form_validation->set_rules($rules);
-		if ($this->form_validation->run() == TRUE)
-		{
-			return true;
-    	}
-		else
-		{
-			$this->error['warning']=$this->lang->line('error_warning');
-			return false;
-    	}
-	}
+	
 	
 }
 /* End of file hmvc.php */

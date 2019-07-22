@@ -58,6 +58,15 @@
                             </div>
 						</div>
 						<div class="tab-pane" id="address" role="tabpanel" aria-labelledby="address-tab">					
+							<div class="form-group row">
+                                <label for="input-phone" class="col-sm-3 control-label">Host<small id="passwordHelpBlock" class="form-text text-muted">
+  										Enable or disable host selection screen
+  									</small></label>
+                                <div class="col-sm-9">
+                                 	<?php echo form_input(array('class'=>'form-control','name' => 'config_address_host', 'id' => 'config_address_host', 'placeholder'=>"Display Text",'value' => set_value('config_address_host', $config_address_host))); ?>
+                                </div>
+                            </div>
+                            <p>Address Fields</p>
 							<div class="table-responsive">
 							  	<table id="address-table" class="table table-striped table-bordered table-hover">
 								  	<thead>
@@ -92,10 +101,41 @@
 							</div>
 						</div>
 						<div class="tab-pane" id="card" role="tabpanel" aria-labelledby="card-tab">					
+							<div class="form-group row">
+                                <label for="input-phone" class="col-sm-3 control-label">Visitors ID Card <small class="form-text text-muted">If enabled new visitors should scan their ID Card </small>
+                                	</label>
+                                <div class="col-sm-9">
+                                 	<?php echo form_checkbox(array('name' => 'config_card_info', 'value' => 'true','checked' => ($config_card_info == 'true' ? true : false))); ?>	
+                                 </div>
+                            </div>
 						</div>
 						<div class="tab-pane" id="photo" role="tabpanel" aria-labelledby="photo-tab">					
+							<div class="form-group row">
+                                <label for="input-phone" class="col-sm-3 control-label">Visitors photo  <small class="form-text text-muted">If enabled new visitors should take their photos </small></label>
+                                <div class="col-sm-9">
+                                 	<?php echo form_checkbox(array('name' => 'config_photo_info', 'value' => 'true','checked' => ($config_photo_info == 'true' ? true : false))); ?>	
+                                 </div>
+                            </div>
 						</div>
 						<div class="tab-pane" id="notification" role="tabpanel" aria-labelledby="notification-tab">					
+							<div class="form-group row">
+                                <label for="input-phone" class="col-sm-3 control-label">Host Notifications  <small class="form-text text-muted">Enable or disable E-mail and SMS notifications sent to host </small></label>
+                                <div class="col-sm-9">
+                                 	<?php echo form_checkbox(array('name' => 'config_photo_info', 'value' => 'true','checked' => ($config_photo_info == 'true' ? true : false))); ?>	
+                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input-phone" class="col-sm-3 control-label">Visitor Notifications   <small class="form-text text-muted">Enable or disable SMS notifications sent to visitor </small></label>
+                                <div class="col-sm-9">
+                                 	<?php echo form_checkbox(array('name' => 'config_photo_info', 'value' => 'true','checked' => ($config_photo_info == 'true' ? true : false))); ?>	
+                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input-phone" class="col-sm-3 control-label">Visitor SMS Text</label>
+                                <div class="col-sm-9">
+                                 	<?php echo form_input(array('class'=>'form-control','name' => 'config_phone_label', 'id' => 'config_phone_label', 'placeholder'=>"sms Text",'value' => set_value('config_phone_label', $config_phone_label))); ?>
+                                </div>
+                            </div>
 						</div>
 					</div>
 				<?php echo form_close(); ?>
@@ -126,7 +166,7 @@
 	    html += '    		</div>';
 	    html += '		</div>';
 	    html += '		<button type="button" onclick="addValues(this,'+address_row+')" data-toggle="tooltip" title="add value" class="btn btn-danger optionbtn">Add Values</button></td>';
-  		html += '	<td><input type="checkbox" name="config_address_field[' + address_row + '][required]" value="" class="form-control" /></td>';
+  		html += '	<td><input type="checkbox" name="config_address_field[' + address_row + '][required]" value="true" class="form-control" /></td>';
 		html += '  	<td><button type="button" onclick="$(\'#address-row' + address_row + '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 		html += '</tr>';
 
