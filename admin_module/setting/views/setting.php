@@ -4,13 +4,13 @@
 			<div class="card-header">
 				<h3 class="card-title float-left"><?php echo $heading_title; ?></h3>
 				<div class="panel-tools float-right">
-					<button type="button" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-danger"><i class="fa fa-save"></i></button>
+					<button type="submit" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-danger" form="form-setting"><i class="fa fa-save"></i></button>
 					<a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-primary"><i class="fa fa-reply"></i></a>
 				</div>
 			</div>
 			<div class="card-body">
 				<?php echo form_open_multipart(null,array('class' => 'form-horizontal', 'id' => 'form-setting','role'=>'form')); ?>
-					 <ul class="nav nav-tabs tabs" role="tablist">
+					<ul class="nav nav-tabs tabs" role="tablist">
                         <li class="nav-item tab">
                             <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="false">
                                 <span class="d-block d-sm-none"><i class="fa fa-dashboard fa-lg"></i></span>
@@ -61,26 +61,26 @@
                         </li>
                     </ul>
 					<div class="tab-content">
-						 <div class="tab-pane show active" id="general" role="tabpanel" aria-labelledby="general-tab">
-							<div class="form-group required">
+						<div class="tab-pane show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="input-title"><?php echo $entry_title; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_site_title', 'id' => 'config_site_title', 'placeholder'=>$entry_title,'value' => set_value('config_site_title', $config_site_title))); ?>
 									<?php echo form_error('config_site_title', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="input-tagline"><?php echo $entry_tagline; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_site_tagline', 'id' => 'config_site_tagline', 'placeholder'=>$entry_tagline,'value' => set_value('config_site_tagline', $config_site_tagline))); ?>
 									<?php echo form_error('config_site_tagline', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-sm-2 control-label" for="input-image"><?php echo $entry_logo; ?></label>
 								<div class="col-sm-2">
 									<div class="fileinput">
-										<div class="thumbnail file-browse">
+										<div class="thumb file-browse">
 											<img src="<?php echo $thumb_logo; ?>" alt="" id="thumb_logo" />
 											<input type="hidden" name="config_site_logo" value="<?php echo $config_site_logo?>" id="site_logo" />
 										</div>
@@ -88,13 +88,13 @@
 											<a class="btn btn-primary btn-xs" onclick="image_upload('site_logo','thumb_logo')"><?php echo $text_image; ?></a>
 											<a class="btn btn-danger btn-xs" onclick="$('#thumb_logo').attr('src', '<?php echo $no_image; ?>'); $('#site_logo').attr('value', '');"><?php echo $text_clear; ?></a>
 										</div>
-										
 									</div>
+
 								</div>
 								<label class="col-sm-2 control-label" for="input-image"><?php echo $entry_icon; ?></label>
 								<div class="col-sm-2">
 									<div class="fileinput">
-										<div class="thumbnail file-browse">
+										<div class="thumb file-browse">
 											<img src="<?php echo $thumb_icon; ?>" alt="" id="thumb_icon" />
 											<input type="hidden" name="config_site_icon" value="<?php echo $config_site_icon?>" id="site_icon" />
 										</div>
@@ -106,28 +106,28 @@
 								</div>
 							</div>
 							
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="input-meta-title"><?php echo $entry_meta_title; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_meta_title', 'id' => 'config_meta_title', 'placeholder'=>$entry_meta_title,'value' => set_value('config_meta_title', $config_meta_title))); ?>
 									<?php echo form_error('config_meta_title', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="input-meta-description"><?php echo $entry_meta_description; ?></label>
 								<div class="col-md-10">
 									<?php echo form_textarea(array('class'=>'form-control','name'=>'config_meta_description', 'id'=>'config_meta_description', 'style'=>'height: 100px;','value'=>set_value('config_meta_description',$config_meta_description))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="input-meta-keywords"><?php echo $entry_meta_keyword; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_meta_keywords', 'id' => 'config_meta_keywords', 'placeholder'=>$entry_meta_keyword,'value' => set_value('config_meta_keywords', $config_meta_keywords))); ?>
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab-site">
-							<div class="form-group required">
+						<div class="tab-pane" id="site" role="tabpanel" aria-labelledby="site-tab">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="site_owner"><?php echo $entry_site_owner; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_site_owner', 'id' => 'config_site_owner', 'placeholder'=>$entry_site_owner,'value' => set_value('config_site_owner', $config_site_owner))); ?>
@@ -135,35 +135,35 @@
 								</div>
 							</div>
 							
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="input-meta-description"><?php echo $entry_address; ?></label>
 								<div class="col-md-10">
 									<?php echo form_textarea(array('class'=>'form-control','name'=>'config_address', 'id'=>'config_address', 'style'=>'height: 100px;','value'=>set_value('config_address',$config_address))); ?>
 									<?php echo form_error('config_address', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="input-meta-keywords"><?php echo $entry_country; ?></label>
 								<div class="col-md-10">
 									<?php echo form_dropdown('config_country_id', option_array_value($countries, 'id', 'name'), set_value('config_country_id', $config_country_id),"id='config_country_id' class='form-control select2'"); ?>
 									<?php echo form_error('config_country_id', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="input-meta-keywords"><?php echo $entry_state; ?></label>
 								<div class="col-md-10">
 									<?php echo form_dropdown('config_state_id', array(), set_value('config_state_id', $config_state_id),"id='config_state_id' class='form-control select2'"); ?>
 									<?php echo form_error('config_state_id', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="input-meta-keywords"><?php echo $entry_email; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_email', 'id' => 'config_email', 'placeholder'=>$entry_email,'value' => set_value('config_email', $config_email))); ?>
 									<?php echo form_error('config_email', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="input-meta-keywords"><?php echo $entry_telephone; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_telephone', 'id' => 'config_telephone', 'placeholder'=>$entry_telephone,'value' => set_value('config_telephone', $config_telephone))); ?>
@@ -171,9 +171,8 @@
 								</div>
 							</div>
 						</div>
-						
-						<div class="tab-pane" id="tab-account">
-							<div class="form-group required">
+						<div class="tab-pane" id="account" role="tabpanel" aria-labelledby="account-tab">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="username">Username</label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'username', 'id' => 'input-username', 'placeholder'=>'Username','value' => set_value('username', $username))); ?>
@@ -181,71 +180,68 @@
 								</div>
 							</div>
 							
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-sm-2 control-label" for="input-password">Password</label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'password', 'id' => 'input-password', 'placeholder'=>'Password','value' => set_value('password', $password))); ?>
 									<?php echo form_error('password', '<div class="text-danger">', '</div>'); ?>
 								</div>
-							</div>
-							
+							</div>	
 						</div>
-						
-						<div class="tab-pane" id="tab-social">
-							<div class="form-group">
+						<div class="tab-pane" id="social" role="tabpanel" aria-labelledby="social-tab">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="input-meta-keywords">Facebook</label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_facebook', 'id' => 'config_facebook', 'placeholder'=>'Facebook','value' => set_value('config_facebook', $config_facebook))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="input-meta-keywords">Twitter</label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_twitter', 'id' => 'config_twitter', 'placeholder'=>'Twitter','value' => set_value('config_twitter', $config_twitter))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="input-meta-keywords">Instagram</label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_instagram', 'id' => 'config_instagram', 'placeholder'=>'Instagram','value' => set_value('config_instagram', $config_instagram))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="input-meta-keywords">Linkedin</label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_linkedin', 'id' => 'config_linkedin', 'placeholder'=>'Linkedin','value' => set_value('config_linkedin', $config_linkedin))); ?>
 								</div>
 							</div>
 						</div>
-						
-						<div class="tab-pane" id="tab-appearance">
-							<div class="form-group">
+						<div class="tab-pane" id="appearance" role="tabpanel" aria-labelledby="appearance-tab">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="site_homepage"><?php echo $entry_site_homepage; ?></label>
 								<div class="col-md-10">
 									<?php  echo form_dropdown('config_site_homepage', option_array_value($pages, 'id', 'title'), set_value('config_site_homepage',$config_site_homepage),array('class'=>'form-control select2','id' => 'config_site_homepage') ); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="front_theme"><?php echo $entry_front_theme; ?></label>
 								<div class="col-md-10">
 									<?php  echo form_dropdown('config_front_theme', $front_themes, set_value('config_front_theme', $config_front_theme), array('class'=>'form-control select2','id' => 'config_front_theme')); ?>
 									<input type="hidden" name="config_admin_theme" value="default">
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="front_template"><?php echo $entry_front_template; ?></label>
 								<div class="col-md-10">
 									<?php  echo form_dropdown('config_front_template', $front_templates, set_value('config_front_template', $config_front_template), array('class'=>'form-control select2','id' => 'config_front_template')); ?>
 									<input type="hidden" name="config_admin_template" value="default">
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="header_layout"><?php echo $entry_header_layout; ?></label>
 								<div class="col-md-10">
 									<?php  echo form_dropdown('config_header_layout', array(''=>'None','image'=>'Image','banner'=>'Banner','slider' => 'Slider'), set_value('config_header_layout',$config_header_layout),array('class'=>'form-control select2','id' => 'config_header_layout')); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="hearder_image"><?php echo $entry_header_image; ?></label>
 								<div class="col-md-10">
 									<div class="fileinput">
@@ -260,14 +256,14 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="header_banner"><?php echo $entry_header_banner; ?></label>
 								<div class="col-md-10">
 									<?php  echo form_dropdown('config_header_banner', option_array_value($banners, 'id', 'title'), set_value('config_header_banner',$config_header_banner),array('class'=>'form-control select2','id' => 'config_header_banner')); ?>
 								</div>
 							</div>
 							
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="background_image"><?php echo $entry_background_image; ?></label>
 								<div class="col-md-3">
 									<div class="fileinput">
@@ -329,7 +325,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="background_color"><?php echo $entry_background_color; ?></label>
 								<div class="col-md-4">
 									
@@ -339,7 +335,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="text_color"><?php echo $entry_text_color; ?></label>
 								<div class="col-md-4">
 									<div class="input-group colorpicker-component">
@@ -349,38 +345,38 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab-ftp">
-							<div class="form-group">
+						<div class="tab-pane" id="ftp" role="tabpanel" aria-labelledby="ftp-tab">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="ftp_host"><?php echo $entry_ftp_host; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_ftp_host', 'id' => 'config_ftp_host', 'value' => set_value('config_ftp_host', $config_ftp_host))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="ftp_port"><?php echo $entry_ftp_port; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_ftp_port', 'id' => 'config_ftp_port', 'value' => set_value('config_ftp_port', $config_ftp_port))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="ftp_username"><?php echo $entry_ftp_username; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_ftp_username', 'id' => 'config_ftp_username', 'value' => set_value('config_ftp_username', $config_ftp_username))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="ftp_password"><?php echo $entry_ftp_password; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_ftp_password', 'id' => 'config_ftp_password', 'value' => set_value('config_ftp_password', $config_ftp_password))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="ftp_root"><?php echo $entry_ftp_root; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_ftp_root', 'id' => 'config_ftp_root', 'value' => set_value('config_ftp_root', $config_ftp_root))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="ftp_enable"><?php echo $entry_ftp_enable; ?></label>
 								<div class="col-md-10">
 									<div class="radio radio-info radio-inline">
@@ -394,52 +390,52 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab-mail">
-							<div class="form-group">
+						<div class="tab-pane" id="mail" role="tabpanel" aria-labelledby="mail-tab">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="mail_protocol"><?php echo $entry_mail_protocol; ?></label>
 								<div class="col-md-10">
 									<?php  echo form_dropdown('config_mail_protocol', array('mail'=>'Mail','smtp' => 'SMTP'), set_value('config_mail_protocol',$config_mail_protocol),array('class'=>'form-control select2','id' => 'config_mail_protocol')); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="mail_parameter"><?php echo $entry_mail_parameter; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_mail_parameter', 'id' => 'config_mail_parameter', 'value' => set_value('config_mail_parameter', $config_mail_parameter))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="smtp_host"><?php echo $entry_smtp_host; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_smtp_host', 'id' => 'config_smtp_host', 'value' => set_value('config_smtp_host', $config_smtp_host))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="smtp_username"><?php echo $entry_smtp_username; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_smtp_username', 'id' => 'config_smtp_username', 'value' => set_value('config_smtp_username', $config_smtp_username))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="smtp_password"><?php echo $entry_smtp_password; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_smtp_password', 'id' => 'config_smtp_password', 'value' => set_value('config_smtp_password', $config_smtp_password))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="smtp_port"><?php echo $entry_smtp_port; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_smtp_port', 'id' => 'config_smtp_port', 'value' => set_value('config_smtp_port', $config_smtp_port))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="smtp_timeout"><?php echo $entry_smtp_timeout; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_smtp_timeout', 'id' => 'config_smtp_timeout', 'value' => set_value('config_smtp_timeout', $config_smtp_timeout))); ?>
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="tab-server">
-							<div class="form-group">
+						<div class="tab-pane" id="server" role="tabpanel" aria-labelledby="server-tab">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="ssl"><span data-toggle="tooltip" title="<?php echo $help_ssl; ?>"><?php echo $entry_ssl; ?></span></label>
 								<div class="col-md-10">
 									<div class="radio radio-info radio-inline">
@@ -452,13 +448,13 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="robots"><span data-toggle="tooltip" title="<?php echo $help_robots; ?>"><?php echo $entry_robots; ?></span></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control tags','name' => 'config_robots', 'id' => 'config_robots', 'value' => set_value('config_robots', $config_robots))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="time_zone"><?php echo $entry_time_zone; ?></label>
 								<div class="col-md-10">
 									<select class="form-control select2" name="config_time_zone" id="config_time_zone">
@@ -473,7 +469,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="date_format"><?php echo $entry_date_format; ?></label>
 								<div class="col-md-10">
 									<div class="radio radio-success">
@@ -504,7 +500,7 @@
 									
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="time_format"><?php echo $entry_time_format; ?></label>
 								<div class="col-md-10">
 									<div class="radio radio-success">
@@ -529,21 +525,21 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="pagination_limit_front"><?php echo $entry_pagination_limit_front; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_pagination_limit_front', 'id' => 'config_pagination_limit_front', 'value' => set_value('config_pagination_limit_front', $config_pagination_limit_front))); ?>
 									<?php echo form_error('config_pagination_limit_front', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group required">
+							<div class="form-group row required">
 								<label class="col-md-2 control-label" for="pagination_limit_admin"><?php echo $entry_pagination_limit_admin; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_pagination_limit_admin', 'id' => 'config_pagination_limit_admin', 'value' => set_value('config_pagination_limit_admin', $config_pagination_limit_admin))); ?>
 									<?php echo form_error('config_pagination_limit_admin', '<div class="text-danger">', '</div>'); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="seo_url"><span data-toggle="tooltip" title="<?php echo $help_seo_url; ?>"><?php echo $entry_seo_url; ?></span></label>
 								<div class="col-md-10">
 									<div class="radio radio-info radio-inline">
@@ -556,25 +552,25 @@
 									</div>                             
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="max_file_size"><?php echo $entry_file_max_size; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_max_file_size', 'id' => 'config_max_file_size', 'value' => set_value('config_max_file_size', $config_max_file_size))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="file_extensions"><?php echo $entry_file_extensions; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control tags','name'=>'config_file_extensions', 'id'=>'config_file_extensions', 'value'=>set_value('config_file_extensions',$config_file_extensions))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="file_mimetypes"><?php echo $entry_file_mimetypes; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control tags','name'=>'config_file_mimetypes', 'id'=>'config_file_mimetypes','value'=>set_value('config_file_mimetypes',$config_file_mimetypes))); ?>		
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="maintenance_mode"><?php echo $entry_maintenance_mode; ?></label>
 								<div class="col-md-10">
 									<div class="radio radio-info radio-inline">
@@ -587,19 +583,19 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="compression_level"><?php echo $entry_compression_level; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_compression_level', 'id' => 'config_compression_level', 'value' => set_value('config_compression_level', $config_compression_level))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="encryption_key"><?php echo $entry_encryption_key; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_encryption_key', 'id' => 'config_encryption_key', 'value' => set_value('config_encryption_key', $config_encryption_key))); ?>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="display_error"><?php echo $entry_display_error; ?></label>
 								<div class="col-md-10">
 									<div class="radio radio-info radio-inline">
@@ -612,7 +608,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="log_error"><?php echo $entry_log_error; ?></label>
 								<div class="col-md-10">
 									<div class="radio radio-info radio-inline">
@@ -625,13 +621,12 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group row">
 								<label class="col-md-2 control-label" for="error_log_filename"><?php echo $entry_error_log_filename; ?></label>
 								<div class="col-md-10">
 									<?php echo form_input(array('class'=>'form-control','name' => 'config_error_log_filename', 'id' => 'config_error_log_filename', 'value' => set_value('config_error_log_filename', $config_error_log_filename))); ?>
 								</div>
 							</div>
-							
 						</div>
 					</div>
 				<?php echo form_close(); ?>
