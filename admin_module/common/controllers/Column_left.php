@@ -46,90 +46,82 @@ class Column_left extends MX_Controller {
 			);
 		}
 		
-		// Users
-		$borrow = array();
+		// posts
+		$post = array();
 		
-		if ($this->user->hasPermission('access', 'borrow/borrow')) {
-			$borrow[] = array(
-				'name'	  => $this->lang->line('text_issue_book'),
-				'href'     => admin_url('borrow'),
+		if ($this->user->hasPermission('access', 'post/post')) {
+			$post[] = array(
+				'name'	  => $this->lang->line('text_list_post'),
+				'href'     => admin_url('post'),
 				'children' => array()		
 			);	
 		}
 		
-		if ($borrow) {
+		if ($this->user->hasPermission('access', 'post/post')) {
+			$post[] = array(
+				'name'	  => $this->lang->line('text_add_post'),
+				'href'     => admin_url('post/add'),
+				'children' => array()		
+			);	
+		}
+		
+		if ($this->user->hasPermission('access', 'post/category')) {
+			$post[] = array(
+				'name'	  => $this->lang->line('text_category'),
+				'href'     => admin_url('post/category'),
+				'children' => array()		
+			);	
+		}
+		
+		if ($this->user->hasPermission('access', 'post/comment')) {
+			$post[] = array(
+				'name'	  => $this->lang->line('text_comment'),
+				'href'     => admin_url('post/comment'),
+				'children' => array()		
+			);	
+		}
+		
+		if ($post) {
 			$data['menus'][] = array(
-				'id'       => 'menu-borrow',
-				'icon'	   => 'md-account-child', 
-				'name'	   => $this->lang->line('text_circulation'),
+				'id'       => 'menu-post',
+				'icon'	  => 'md-account-child', 
+				'name'	  => $this->lang->line('text_post'),
 				'href'     => '',
-				'children' => $borrow
+				'children' => $post
 			);
 		}
 		
-		// Students
-		$student = array();
 		
-		if ($this->user->hasPermission('access', 'student/student')) {
-			$student[] = array(
-				'name'	  => $this->lang->line('text_student'),
-				'href'     => admin_url('student'),
+		// Visitors
+		$visitor = array();
+		
+		if ($this->user->hasPermission('access', 'visitor/visitor')) {
+			$visitor[] = array(
+				'name'	  => $this->lang->line('text_list_visitor'),
+				'href'     => admin_url('visitor'),
 				'children' => array()		
 			);	
 		}
 		
-		if ($student) {
+		if ($this->user->hasPermission('access', 'visitor/visitor')) {
+			$visitor[] = array(
+				'name'	  => $this->lang->line('text_web_checkin'),
+				'href'     => admin_url('visitor/checkin'),
+				'children' => array()		
+			);	
+		}
+	
+		
+		if ($visitor) {
 			$data['menus'][] = array(
-				'id'       => 'menu-student',
+				'id'       => 'menu-user',
 				'icon'	   => 'md-account-child', 
-				'name'	   => $this->lang->line('text_student'),
+				'name'	   => $this->lang->line('text_visitor'),
 				'href'     => '',
-				'children' => $student
+				'children' => $visitor
 			);
 		}
 		
-		// Users
-		$report = array();
-		
-		if ($this->user->hasPermission('access', 'report/report')) {
-			$report[] = array(
-				'name'	  => $this->lang->line('text_fine_report'),
-				'href'     => admin_url('report'),
-				'children' => array()		
-			);	
-		}
-		/*if ($this->user->hasPermission('access', 'report/notification')) {
-			$report[] = array(
-				'name'	  => $this->lang->line('text_notification_report'),
-				'href'     => admin_url('report/notification'),
-				'children' => array()		
-			);	
-		}
-		if ($this->user->hasPermission('access', 'report/delaymember')) {
-			$report[] = array(
-				'name'	  => $this->lang->line('text_delaymember_report'),
-				'href'     => admin_url('report/delaymember'),
-				'children' => array()		
-			);	
-		}
-		if ($this->user->hasPermission('access', 'report/inventory')) {
-			$report[] = array(
-				'name'	  => $this->lang->line('text_inventory_report'),
-				'href'     => admin_url('report/inventory'),
-				'children' => array()		
-			);	
-		}*/
-		
-		
-		if ($report) {
-			$data['menus'][] = array(
-				'id'       => 'menu-report',
-				'icon'	   => 'md-account-child', 
-				'name'	   => $this->lang->line('text_report'),
-				'href'     => '',
-				'children' => $report
-			);
-		}
 		
 		// Users
 		$users = array();
@@ -142,13 +134,13 @@ class Column_left extends MX_Controller {
 			);	
 		}
 		
-		/*if ($this->user->hasPermission('access', 'users/user_group')) {
+		if ($this->user->hasPermission('access', 'users/user_group')) {
 			$users[] = array(
 				'name'	  => $this->lang->line('text_user_group'),
 				'href'     => admin_url('users/user_group'),
 				'children' => array()		
 			);	
-		}*/
+		}
 	
 		
 		if ($users) {
@@ -161,6 +153,8 @@ class Column_left extends MX_Controller {
 			);
 		}
 		
+		
+		
 		// System
 		$system = array();
 		
@@ -171,10 +165,10 @@ class Column_left extends MX_Controller {
 				'children' => array()		
 			);	
 		}
-
+		
 		if ($this->user->hasPermission('access', 'setting/checkinflow')) {
 			$system[] = array(
-				'name'	  => $this->lang->line('text_checkinflow'),
+				'name'	  => $this->lang->line('text_checkin'),
 				'href'     => admin_url('setting/checkinflow'),
 				'children' => array()		
 			);	
