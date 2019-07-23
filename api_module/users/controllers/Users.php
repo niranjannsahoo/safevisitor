@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Users extends REST_Controller {
 	private $error = array();
 	

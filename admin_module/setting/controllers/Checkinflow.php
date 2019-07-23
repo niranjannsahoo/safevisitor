@@ -13,8 +13,7 @@ class Checkinflow extends Admin_Controller {
       $data = array();
 		$data = $this->lang->load('checkinflow');
 		$this->template->set_meta_title($this->lang->line('heading_title'));
-		$this->template->add_package(array('ckeditor','colorbox'),true);
-        
+		   
 		$data['breadcrumbs'] = array();
 		$data['breadcrumbs'][] = array(
 			'text' => $this->lang->line('heading_title'),
@@ -23,8 +22,6 @@ class Checkinflow extends Admin_Controller {
 		
 		
 		if ($this->input->server('REQUEST_METHOD') === 'POST'){
-			printr($this->input->post());
-			exit;
 			$this->setting_model->editSetting('checkin',$this->input->post());
 			$this->session->set_flashdata('message', 'Checkinflow Saved');
 			redirect(current_url());
@@ -42,24 +39,24 @@ class Checkinflow extends Admin_Controller {
 		
 		
 		/*Phone Tab*/
-		if ($this->input->post('config_phone_label')){
-			$data['config_phone_label'] = $this->input->post('config_phone_label');
+		if ($this->input->post('checkin_phone_label')){
+			$data['checkin_phone_label'] = $this->input->post('checkin_phone_label');
 		} else {
-			$data['config_phone_label'] = $this->settings->config_phone_label;
+			$data['checkin_phone_label'] = $this->settings->checkin_phone_label;
 		}
 		
-		if ($this->input->post('config_phone_otp')){
-			$data['config_phone_otp'] = $this->input->post('config_phone_otp');
+		if ($this->input->post('checkin_phone_otp')){
+			$data['checkin_phone_otp'] = $this->input->post('checkin_phone_otp');
 		} else {
-			$data['config_phone_otp'] = $this->settings->config_phone_otp;
+			$data['checkin_phone_otp'] = $this->settings->checkin_phone_otp;
 		}
 
 		/*Address Tab*/
 
-		if ($this->input->post('config_address_host')){
-			$data['config_address_host'] = $this->input->post('config_address_host');
+		if ($this->input->post('checkin_address_host')){
+			$data['checkin_address_host'] = $this->input->post('checkin_address_host');
 		} else {
-			$data['config_address_host'] = $this->settings->config_address_host;
+			$data['checkin_address_host'] = $this->settings->checkin_address_host;
 		}
 
 		$data['fieldTypes']=array(
@@ -69,26 +66,45 @@ class Checkinflow extends Admin_Controller {
 			'select'=>'Dropdown'
 		);
 
-		//$this->settings->config_address_field = 
+		//$this->settings->checkin_address_field = 
 
-		if ($this->input->post('config_address_field')){
-			$data['config_address_field'] = $this->input->post('config_address_field');
+		if ($this->input->post('checkin_address_field')){
+			$data['checkin_address_field'] = $this->input->post('checkin_address_field');
 		} else {
-			$data['config_address_field'] = (array)$this->settings->config_address_field;
+			$data['checkin_address_field'] = (array)$this->settings->checkin_address_field;
 		}
 
 		/*Card Tab*/
-		if ($this->input->post('config_card_info')){
-			$data['config_card_info'] = $this->input->post('config_card_info');
+		if ($this->input->post('checkin_card_info')){
+			$data['checkin_card_info'] = $this->input->post('checkin_card_info');
 		} else {
-			$data['config_card_info'] = $this->settings->config_card_info;
+			$data['checkin_card_info'] = $this->settings->checkin_card_info;
 		}
 
 		/*Photo Tab*/
-		if ($this->input->post('config_photo_info')){
-			$data['config_photo_info'] = $this->input->post('config_photo_info');
+		if ($this->input->post('checkin_photo_info')){
+			$data['checkin_photo_info'] = $this->input->post('checkin_photo_info');
 		} else {
-			$data['config_photo_info'] = $this->settings->config_photo_info;
+			$data['checkin_photo_info'] = $this->settings->checkin_photo_info;
+		}
+		
+		/*Notification Tab*/
+		if ($this->input->post('checkin_notification_host')){
+			$data['checkin_notification_host'] = $this->input->post('checkin_notification_host');
+		} else {
+			$data['checkin_notification_host'] = $this->settings->checkin_notification_host;
+		}
+		
+		if ($this->input->post('checkin_notification_visitor')){
+			$data['checkin_notification_visitor'] = $this->input->post('checkin_notification_visitor');
+		} else {
+			$data['checkin_notification_visitor'] = $this->settings->checkin_notification_visitor;
+		}
+		
+		if ($this->input->post('checkin_notification_sms')){
+			$data['checkin_notification_sms'] = $this->input->post('checkin_notification_sms');
+		} else {
+			$data['checkin_notification_sms'] = $this->settings->checkin_notification_sms;
 		}
        
 			

@@ -239,8 +239,11 @@ class Setting_model extends MY_Model
 	public function editSetting($module, $data) {
 		$this->db->where('module',$module);
 		$this->db->delete('config');
-		
+		//printr($data);
+		//exit;
+		//echo $module;
 		foreach ($data as $key => $value) {
+			//echo substr($key, 0, strlen($module));
 			if (substr($key, 0, strlen($module)) == $module) {
 				
 				if (!is_array($value)) {
@@ -250,6 +253,6 @@ class Setting_model extends MY_Model
 				}
 			}
 		}
-			
+		//exit;	
 	}
 }

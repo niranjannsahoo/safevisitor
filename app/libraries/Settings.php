@@ -42,4 +42,11 @@ class Settings
 		}
 		$Settings->free_result();
    }
+	
+	/*function get_config($module){
+		$this->CI->db->where('module',$module);
+		$Settings = $this->CI->db->get(self::TABLE);
+		
+		
+	}*/
 }

@@ -47,13 +47,13 @@
 							<div class="form-group row">
                                 <label for="input-phone" class="col-sm-3 control-label">Display Text</label>
                                 <div class="col-sm-9">
-                                 	<?php echo form_input(array('class'=>'form-control','name' => 'config_phone_label', 'id' => 'config_phone_label', 'placeholder'=>"Display Text",'value' => set_value('config_phone_label', $config_phone_label))); ?>
+                                 	<?php echo form_input(array('class'=>'form-control','name' => 'checkin_phone_label', 'id' => 'checkin_phone_label', 'placeholder'=>"Display Text",'value' => set_value('checkin_phone_label', $checkin_phone_label))); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="input-phone" class="col-sm-3 control-label">OTP Verification</label>
                                 <div class="col-sm-9">
-                                 	<?php echo form_checkbox(array('name' => 'config_phone_otp', 'value' => 'true','checked' => ($config_phone_otp == 'true' ? true : false))); ?>	
+                                 	<?php echo form_checkbox(array('name' => 'checkin_phone_otp', 'value' => 'true','checked' => ($checkin_phone_otp == 'true' ? true : false))); ?>	
                                  </div>
                             </div>
 						</div>
@@ -63,7 +63,7 @@
   										Enable or disable host selection screen
   									</small></label>
                                 <div class="col-sm-9">
-                                 	<?php echo form_input(array('class'=>'form-control','name' => 'config_address_host', 'id' => 'config_address_host', 'placeholder'=>"Display Text",'value' => set_value('config_address_host', $config_address_host))); ?>
+                                 	<?php echo form_input(array('class'=>'form-control','name' => 'checkin_address_host', 'id' => 'checkin_address_host', 'placeholder'=>"Display Text",'value' => set_value('checkin_address_host', $checkin_address_host))); ?>
                                 </div>
                             </div>
                             <p>Address Fields</p>
@@ -80,12 +80,12 @@
 	                  				</thead>
                   				 	<tbody>
                     				<?php $address_row=0;?>
-                    				<?php foreach($config_address_field as $address){?>
+                    				<?php foreach($checkin_address_field as $address){?>
                     					<tr id="address-row<?php echo $address_row;?>">
-	                        				<td><input type="text" name="config_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
-	                        				<td><input type="text" name="config_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
-	                        				<td><input type="text" name="config_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
-	                        				<td><input type="text" name="config_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
+	                        				<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
+	                        				<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
+	                        				<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
+	                        				<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
 	                        				<td><button type="button" onclick="$('#address-row<?php echo $address_row;?>').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
 							  			</tr>
 							  		<?php $address_row++;
@@ -105,37 +105,37 @@
                                 <label for="input-phone" class="col-sm-3 control-label">Visitors ID Card <small class="form-text text-muted">If enabled new visitors should scan their ID Card </small>
                                 	</label>
                                 <div class="col-sm-9">
-                                 	<?php echo form_checkbox(array('name' => 'config_card_info', 'value' => 'true','checked' => ($config_card_info == 'true' ? true : false))); ?>	
+                                 	<?php echo form_checkbox(array('name' => 'checkin_card_info', 'value' => 'true','checked' => ($checkin_card_info == 'true' ? true : false))); ?>	
                                  </div>
                             </div>
 						</div>
 						<div class="tab-pane" id="photo" role="tabpanel" aria-labelledby="photo-tab">					
 							<div class="form-group row">
-                                <label for="input-phone" class="col-sm-3 control-label">Visitors photo  <small class="form-text text-muted">If enabled new visitors should take their photos </small></label>
-                                <div class="col-sm-9">
-                                 	<?php echo form_checkbox(array('name' => 'config_photo_info', 'value' => 'true','checked' => ($config_photo_info == 'true' ? true : false))); ?>	
-                                 </div>
-                            </div>
+								  <label for="input-phone" class="col-sm-3 control-label">Visitors photo  <small class="form-text text-muted">If enabled new visitors should take their photos </small></label>
+								  <div class="col-sm-9">
+										<?php echo form_checkbox(array('name' => 'checkin_photo_info', 'value' => 'true','checked' => ($checkin_photo_info == 'true' ? true : false))); ?>	
+									</div>
+							 </div>
 						</div>
 						<div class="tab-pane" id="notification" role="tabpanel" aria-labelledby="notification-tab">					
 							<div class="form-group row">
-                                <label for="input-phone" class="col-sm-3 control-label">Host Notifications  <small class="form-text text-muted">Enable or disable E-mail and SMS notifications sent to host </small></label>
-                                <div class="col-sm-9">
-                                 	<?php echo form_checkbox(array('name' => 'config_photo_info', 'value' => 'true','checked' => ($config_photo_info == 'true' ? true : false))); ?>	
-                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="input-phone" class="col-sm-3 control-label">Visitor Notifications   <small class="form-text text-muted">Enable or disable SMS notifications sent to visitor </small></label>
-                                <div class="col-sm-9">
-                                 	<?php echo form_checkbox(array('name' => 'config_photo_info', 'value' => 'true','checked' => ($config_photo_info == 'true' ? true : false))); ?>	
-                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="input-phone" class="col-sm-3 control-label">Visitor SMS Text</label>
-                                <div class="col-sm-9">
-                                 	<?php echo form_input(array('class'=>'form-control','name' => 'config_phone_label', 'id' => 'config_phone_label', 'placeholder'=>"sms Text",'value' => set_value('config_phone_label', $config_phone_label))); ?>
-                                </div>
-                            </div>
+								  <label for="input-phone" class="col-sm-3 control-label">Host Notifications  <small class="form-text text-muted">Enable or disable E-mail and SMS notifications sent to host </small></label>
+								  <div class="col-sm-9">
+										<?php echo form_checkbox(array('name' => 'checkin_notification_host', 'value' => 'true','checked' => ($checkin_notification_host == 'true' ? true : false))); ?>	
+									</div>
+							 </div>
+							 <div class="form-group row">
+								  <label for="input-phone" class="col-sm-3 control-label">Visitor Notifications   <small class="form-text text-muted">Enable or disable SMS notifications sent to visitor </small></label>
+								  <div class="col-sm-9">
+										<?php echo form_checkbox(array('name' => 'checkin_notification_visitor', 'value' => 'true','checked' => ($checkin_notification_visitor == 'true' ? true : false))); ?>	
+									</div>
+							 </div>
+							 <div class="form-group row">
+								  <label for="input-phone" class="col-sm-3 control-label">Visitor SMS Text</label>
+								  <div class="col-sm-9">
+										<?php echo form_input(array('class'=>'form-control','name' => 'checkin_notification_sms', 'id' => 'checkin_notification_sms', 'placeholder'=>"sms Text",'value' => set_value('checkin_notification_sms', $checkin_notification_sms))); ?>
+								  </div>
+							 </div>
 						</div>
 					</div>
 				<?php echo form_close(); ?>
@@ -152,21 +152,21 @@
   	function addField() {
   		value_row = 0;
   		html = '<tr id="address-row' + address_row + '">';
-	  	html += '	<td><input type="text" name="config_address_field[' + address_row + '][name]" value="" class="form-control" /></td>';
-  		html += '  	<td><select name="config_address_field[' + address_row + '][type]" class="form-control">';
+	  	html += '	<td><input type="text" name="checkin_address_field[' + address_row + '][name]" value="" class="form-control" /></td>';
+  		html += '  	<td><select name="checkin_address_field[' + address_row + '][type]" class="form-control">';
 	    <?php foreach($fieldTypes as $key=>$value){?>
 		html += '    	<option value="<?php echo $key;?>"><?php echo $value;?></option>';
 	    <?php }?>
 		html += '  </select></td>';
 		html += '	<td class="moreoption">';
 		html += '		<div class="input-group mb-2" id="value-row' + address_row + value_row +'">';
-	    html += '   		<input type="text" name="config_address_field[' + address_row + '][value][]" value="" class="form-control" />';
+	    html += '   		<input type="text" name="checkin_address_field[' + address_row + '][value][]" value="" class="form-control" />';
 	    html += '   		<div class="input-group-append">'
 	    html += '       		<span class="input-group-text"><i class="fa fa-minus-circle"></i></span>';
 	    html += '    		</div>';
 	    html += '		</div>';
 	    html += '		<button type="button" onclick="addValues(this,'+address_row+')" data-toggle="tooltip" title="add value" class="btn btn-danger optionbtn">Add Values</button></td>';
-  		html += '	<td><input type="checkbox" name="config_address_field[' + address_row + '][required]" value="true" class="form-control" /></td>';
+  		html += '	<td><input type="checkbox" name="checkin_address_field[' + address_row + '][required]" value="true" class="form-control" /></td>';
 		html += '  	<td><button type="button" onclick="$(\'#address-row' + address_row + '\').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 		html += '</tr>';
 
@@ -177,7 +177,7 @@
 
 	function addValues(obj,row){row
 		sub_html='<div class="input-group mb-2" id="value-row' + row + value_row +'">';
-	    sub_html+='   <input type="text" name="config_address_field[' + row + '][value][]" value="" class="form-control" />';
+	    sub_html+='   <input type="text" name="checkin_address_field[' + row + '][value][]" value="" class="form-control" />';
 	    sub_html+='   <div class="input-group-append">'
 	    sub_html+='       <span class="input-group-text" onclick="$(\'#value-row' + row + value_row + '\').remove();"><i class="fa fa-minus-circle"></i></span>';
 	    sub_html+='    </div>';

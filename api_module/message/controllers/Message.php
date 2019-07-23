@@ -1,13 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Message extends REST_Controller {
 	private $error = array();
 	
 	function __construct(){
 		parent::__construct();
 		$this->load->model('message_model');
+		$this->load->model('users/users_model');
 	}
-
+	
 	public function index_get(){
 		$json=array(
 				'status'=>false,
@@ -17,7 +17,6 @@ class Message extends REST_Controller {
 		$this->set_response($json, REST_Controller::HTTP_OK);
 	}
 
-	
 	public function otp_post(){
 		$json=array();
 		$otp = rand(1000, 9999);
@@ -31,45 +30,32 @@ class Message extends REST_Controller {
 			$json['error'] 	= true;
 		}
 		if (!$json) {
-			
-			$user=$this->api_model->getUser($user_id);
-				//printr($user);
-				$user['ROLEDATA']=$this->api_model->getUserRole($user_id);
-				$tokendata=array(
-					"TOKEN"=>$this->post('token')
+				
+			//$result=$this->sendOtp($otp,$this->post('mobile'));
+			$result=array();
+		
+			if(isset($result['error_status'])){
+				$json=array(
+					'error'=>true,
+					'message'=>"Enter valid Mobile Number",
 				);
-				$this->api_model->updateToken($user_id,$tokendata);
+				
+			}else{
+				$user=$this->users_model->getUserByPhone($this->post('mobile'));
+				
 				$json=array(
 					'error'=>false,
-					'user'=>$user,
-					'verified' => true,
-					'message'=>"Login Successfully",
+					'message'=>"SMS request is initiated! You will be receiving it shortly.",
+					'otp'=>$otp,
+					'user'=>$user
 				);
-			}else{
-				$result=$this->sendOtp($otp,$this->post('mobile'));
-				if(isset($result['error_status'])){
-					$json=array(
-						'error'=>true,
-						'message'=>"Enter valid Mobile Number",
-					);
-					
-				}else{
-					$json=array(
-						'error'=>false,
-						'verified'=>false,
-						'message'=>"SMS request is initiated! You will be receiving it shortly.",
-						'otp'=>$otp
-					);
-					
-				}
 			}
-			
 		}
 		$this->set_response($json, REST_Controller::HTTP_OK);
 	}
-
+	
 	protected function sendOtp($otp, $mobile){
-		$sms_content = "Welcome to SafeAct : Your verification code is $otp";
+		$sms_content = "Welcome to SafeVisitor : Your verification code is $otp";
 		 
 		//Encoding the text in url format
 		$sms_text = urlencode($sms_content);
@@ -78,12 +64,12 @@ class Message extends REST_Controller {
 		$api_url = 'http://enterprise.cloudsvas.com/SendSms?user_ID='. SMSUSER .'&user_Pwd='. PASSWORD .'&sender_ID='.SENDERID.'&MOB_NO='.$mobile.'&msg='.$sms_text.'&sms_Type=trans&param=eng';
 		
 		 //Envoking the API url and getting the response 
-		 $response = file_get_contents( $api_url);
+		$response = file_get_contents( $api_url);
 		 
 		 //Returning the response 
 		 return json_decode($response,true);
 	}
-
+	
 	
 	protected function validateOTPForm(){
 		
@@ -109,6 +95,7 @@ class Message extends REST_Controller {
     	}
 		return !$this->error;
    }
+	
 	
 }
 /* End of file hmvc.php */

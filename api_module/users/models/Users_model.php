@@ -25,6 +25,12 @@ class Users_model extends CI_Model
 		$res=$this->db->get('user')->row();
 		return $res;
 	}
+	
+	public function getUserByPhone($phone) {
+      $this->db->where("phone",$phone);
+		$res=$this->db->get('user')->row();
+		return (object)$res;
+	}
 
 	public function updateUser($id, $data) {
 		$this->db->where("id",$id);
