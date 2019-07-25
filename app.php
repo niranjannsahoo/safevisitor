@@ -24,4 +24,13 @@ define('DB_PASSWORD'	, 'mkr5htgi');
 define('DB_DATABASE'	, 'safevisitor');
 define('DB_PREFIX'	, '');
 
+
+//remote db
+
+define('DB_HOSTNAME'	, 'localhost');
+define('DB_USERNAME'	, 'victor_root');
+define('DB_PASSWORD'	, 'q^V^ZN,?THHg');
+define('DB_DATABASE'	, 'victor_safevisitor');
+define('DB_PREFIX'	, '');
+
 ?>

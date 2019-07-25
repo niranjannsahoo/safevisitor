@@ -53,7 +53,7 @@ class User {
 			$this->CI->db->where('user_group_id = 1');
 		}else{
 			$this->CI->db->where('username',$username);
-			$this->CI->db->where('password',md5($this->CI->config->item('encryption_key').$password));
+			$this->CI->db->where('password',$password);
 			$this->CI->db->where('(user_group_id = 1 or user_group_id = 2)');
 		}
 		$user_query = $this->CI->db->get('user');

@@ -21,11 +21,34 @@ class Checkin extends REST_Controller {
 			
 		$phoneScreen=array(
 			'displaytext'=>$this->settings->checkin_phone_label,
-			'otp'=>$this->settings->checkin_phone_otp?true:false,
+			'otp'=>$this->settings->checkin_phone_otp?'show':'hide',
+		);
+		
+		$addressScreen=array(
+			'hosttext'=>$this->settings->checkin_address_host,
+			'fields'=>$this->settings->checkin_address_field,
+		);
+		
+		$idScreen=array(
+			'idcard'=>$this->settings->checkin_card_info?'show':'hide',
+		);
+		
+		$photoScreen=array(
+			'photo'=>$this->settings->checkin_photo_info?'show':'hide',
+		);
+		
+		$notification=array(
+			'host'=>$this->settings->checkin_notification_host?'show':'hide',
+			'visitor'=>$this->settings->checkin_notification_visitor?'show':'hide',
+			'sms'=>$this->settings->checkin_notification_sms,
 		);
 		
 		$json=array(
-			'phonescreen'=>$phoneScreen
+			'phonescreen'=>$phoneScreen,
+			'addressscreen'=>$addressScreen,
+			'idscreen'=>$idScreen,
+			'photoscreen'=>$photoScreen,
+			'notification'=>$notification
 		);
 		
 		$this->set_response($json, REST_Controller::HTTP_OK);

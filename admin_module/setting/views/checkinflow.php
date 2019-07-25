@@ -80,14 +80,42 @@
 	                  				</thead>
                   				 	<tbody>
                     				<?php $address_row=0;?>
+										<?php $value_row=0;?>
                     				<?php foreach($checkin_address_field as $address){?>
                     					<tr id="address-row<?php echo $address_row;?>">
-	                        				<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
-	                        				<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
-	                        				<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
-	                        				<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
-	                        				<td><button type="button" onclick="$('#address-row<?php echo $address_row;?>').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
-							  			</tr>
+												<td><input type="text" name="checkin_address_field[<?php echo $address_row; ?>][name]" value="<?php echo  $address['name'];?>" class="form-control"/></td>
+												<td>
+													<select name="checkin_address_field[<?php echo $address_row; ?>][type]" class="form-control">
+													<?php foreach($fieldTypes as $key=>$value){?>
+														<option value="<?php echo $key;?>" <?=($address['type']==$key)?"selected='selected'":""?>><?php echo $value;?></option>
+													<?php }?>
+													</select>
+												</td>
+												<td>
+													<?php if($address['type']=="text"){?>
+													<div class="input-group mb-2" id="value-row<?php echo $address_row; ?><?php echo $value_row; ?>">
+														<input type="text" name="checkin_address_field[<?php echo $address_row; ?>][value][]" value="<?php echo  $address['value'][0];?>" class="form-control" />
+														<div class="input-group-append">
+															<span class="input-group-text"><i class="fa fa-minus-circle"></i></span>
+														</div>
+													</div>
+													<?php }else if($address['type']=="radio" || $address['type']=="checkbox" || $address['type']=="select"){?>
+													<?php foreach($address['value'] as $val){?>
+														<div class="input-group mb-2" id="value-row<?php echo $address_row; ?><?php echo $value_row; ?>">
+															<input type="text" name="checkin_address_field[<?php echo $address_row; ?>][value][]" value="<?php echo $val;?>" class="form-control" />
+															<div class="input-group-append">
+																<span class="input-group-text" onclick="$('#value-row<?php echo $address_row; ?><?php echo $value_row; ?>').remove();"><i class="fa fa-minus-circle"></i></span>
+															</div>
+														</div>
+													<?php $value_row++;}?>
+													<?php }?>
+													<button type="button" onclick="addValues(this,<?php echo $address_row; ?>)" data-toggle="tooltip" title="add value" class="btn btn-danger optionbtn">Add Values</button>
+												</td>
+												<td>
+												<?php echo form_checkbox(array('class'=>'icheck','name' => 'checkin_address_field['.$address_row.'][required]', 'value' => 'true','checked' => (isset($address['required']) ? true : false) )); ?>
+												</td>
+												<td><button type="button" onclick="$('#address-row<?php echo $address_row;?>').remove();" data-toggle="tooltip" title="Remove" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+											</tr>
 							  		<?php $address_row++;
 							  		}?>
 							  		</tbody>
@@ -146,8 +174,8 @@
 
 <?php js_start(); ?>
 <script type="text/javascript"><!--
-    var address_row = <?php echo $address_row ;?>;
-   	var value_row = 0;
+   var address_row = <?php echo $address_row ;?>;
+   var value_row = <?php echo $value_row ;?>;
 
   	function addField() {
   		value_row = 0;

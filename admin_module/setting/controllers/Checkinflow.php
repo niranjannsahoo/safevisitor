@@ -73,7 +73,9 @@ class Checkinflow extends Admin_Controller {
 		} else {
 			$data['checkin_address_field'] = (array)$this->settings->checkin_address_field;
 		}
-
+		
+		//print_r();
+		
 		/*Card Tab*/
 		if ($this->input->post('checkin_card_info')){
 			$data['checkin_card_info'] = $this->input->post('checkin_card_info');
